@@ -61,6 +61,7 @@ const Navbar = () => {
           <Link to="/" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Home</Link>
           <Link to="/post" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Add Post</Link>
           <Link to="/explore" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Explore</Link>
+          <Link to="/movies" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Movies</Link>
           {user && (
             <Link to="/myposts" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>My Posts</Link>
           )}
@@ -92,6 +93,9 @@ const Navbar = () => {
         
         <Link to="/explore" className="text-lg">
           <img src="explore.svg" alt="Explore" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
+        </Link>
+        <Link to="/movies" className="text-lg">
+          <img src="movie.svg" alt="Explore" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
         </Link>
         <Link to="/post" className="text-lg">
           <img src="add.svg" alt="Add" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
