@@ -13,19 +13,19 @@ const Explore = () => {
   const [postComments, setPostComments] = useState({});
   const [newComment, setNewComment] = useState({}); // Track new comments for each post
 
-  // Fetch posts
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axiosInstance.get("/posts");
-
-
-        setPosts(response.data);
+  
+        // Sort posts by updatedAt in descending order
+        const sortedPosts = response.data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+        setPosts(sortedPosts);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
     };
-
+  
     fetchPosts();
   }, []);
 
