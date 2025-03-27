@@ -9,15 +9,15 @@ const Homepage = () => {
           <img src="logo_light.svg" alt="Kafka" className="h-16 w-16 sm:h-20 sm:w-20" />
         </Link>
 
-        <h1 className="text-5xl mb-4 font-goldman">
+        <h1 className="md:text-5xl text:xl mb-4 font-goldman">
           Welcome to Kafka
         </h1>
 
-        <p className="text-xl max-w-3xl mx-auto text-primary">
+        <p className="md:text-xl text-sm max-w-3xl mx-auto text-primary">
           Made by Moez for friends
           Kafka is a place where each day you can choose one song from Spotify and reflect on how life feels that day.
         </p>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
+        <p className="md:text-lg text:sm text-gray-300 max-w-2xl mx-auto mb-6">
           Share your thoughts, connect with others, and explore the feelings of others through music and words.
         </p>
 
