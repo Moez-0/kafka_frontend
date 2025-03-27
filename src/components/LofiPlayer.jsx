@@ -1,13 +1,20 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FaCompactDisc } from "react-icons/fa6";
 
 const LofiPlayer = () => {
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(true); // Autoplay enabled
   const youtubeUrl =
-    "https://www.youtube.com/embed/-R0UYHS8A_A?autoplay=1&loop=1&playlist=-R0UYHS8A_A";
-    useEffect(() => {
-      setPlaying(true); // Ensure autoplay on mount
-    }, [])
+    "https://www.youtube.com/embed/-R0UYHS8A_A?autoplay=1&loop=1&playlist=-R0UYHS8A_A&mute=1"; // Muted autoplay
+
+  useEffect(() => {
+    // Small delay to ensure autoplay
+    const timer = setTimeout(() => {
+      setPlaying(true);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div>
       {/* Button to toggle lofi beats */}
