@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api', // Replace with your backend API URL
+  baseURL: 'https://kafka-backend-idwn.onrender.com/api', // Replace with your backend API URL
 });
 
 // Intercept requests to add Authorization header

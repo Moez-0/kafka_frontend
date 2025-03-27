@@ -50,7 +50,7 @@ const Add = () => {
         songLink,
       };
 
-      await axios.post("http://localhost:5000/api/posts", postData, {
+      await axios.post("https://kafka-backend-idwn.onrender.com/api/posts", postData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
