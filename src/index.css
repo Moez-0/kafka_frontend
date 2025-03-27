@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Goldman:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --primary: #F4EFED;
+  --secondary: #222222;
+  --background :#0C0D0E;
+}
+
+@theme{
+    --font-goldman: 'Goldman', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+    --font-rubik: 'Rubik', sans-serif;
+    --font-bricolage: 'Bricolage Grotesque', sans-serif;
+    --color-primary : var(--primary) ;
+    --color-secondary : var(--secondary) ;
+    --color-background : var(--background) ;
+
+}
+
+
+body {
+  font-family: var(--font-goldman);
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
