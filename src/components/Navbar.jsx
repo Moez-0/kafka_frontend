@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Import useAuth hook
 import { RiMenu4Fill , RiMenu5Fill } from "react-icons/ri";
+import { FaCompactDisc } from "react-icons/fa6";
+import LofiPlayer from './LofiPlayer'; // Import LofiPlayer component
 
 const Navbar = () => {
   const { user, logout } = useAuth(); // Get user and logout from AuthContext
@@ -42,7 +44,9 @@ const Navbar = () => {
       </div>
 
       {/* Hamburger icon (only visible on mobile) */}
-      
+      <div className="md:hidden md:flex items-center space-x-4">
+          <LofiPlayer /> {/* 🎶 Lofi Audio Toggle */}
+        </div>
       <RiMenu4Fill
         onClick={handleMenu}
         className="h-8 w-8 text-primary cursor-pointer md:hidden"
@@ -84,6 +88,8 @@ const Navbar = () => {
         <Link to="/" className="text-lg">
           <img src="home.svg" alt="Home" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
         </Link>
+
+        
         <Link to="/explore" className="text-lg">
           <img src="explore.svg" alt="Explore" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
         </Link>
@@ -94,6 +100,7 @@ const Navbar = () => {
 
       {/* Desktop Authentication links */}
       <div className="hidden md:flex items-center space-x-4">
+      
         <Link to="/explore" className="hover:text-pink-300 transition">Explore</Link>
         {user && (
           <Link to="/myposts" className="hover:text-pink-300 transition">My Posts</Link>
@@ -101,18 +108,26 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={() => { handleLogout(); }}
-            className="text-lg text-background bg-primary py-1 px-3 cursor-pointer border rounded-sm transition-colors duration-200 hover:brightness-60"
+            className="text-lg text-background bg-primary py-1 px-3 cursor-pointer border rounded-sm transition-colors duration-200 hover:bg-pink-300"
           >
             Log out
           </button>
         ) : (
           <Link
             to="/login"
-            className="text-lg text-background bg-primary py-1 px-3 border rounded-sm transition-colors duration-200 hover:brightness-60"
+            className="text-lg text-background bg-primary py-1 px-3 border rounded-sm transition-colors duration-200 hover:bg-pink-300"
           >
             Log in
           </Link>
         )}
+ 
+        <button className='cursor-pointer hover:text-pink-300 transition'>
+
+
+        <div className="hidden md:flex items-center space-x-4">
+          <LofiPlayer /> {/* 🎶 Lofi Audio Toggle */}
+        </div>
+        </button>
       </div>
     </nav>
   );
