@@ -5,7 +5,17 @@
   --primary: #F4EFED;
   --secondary: #222222;
   --background :#0C0D0E;
+  --background-dark:#F4EFED;
+  --primary-dark:#222222;
+  --secondary-dark:#F4EFED;
+
 }
+[data-theme="light"] {
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
+  --background: var(--background-dark);
+}
+
 
 @theme{
     --font-goldman: 'Goldman', sans-serif;
@@ -19,8 +29,10 @@
 }
 
 
+
 body {
   font-family: var(--font-goldman);
   background-color: var(--color-background);
   color: var(--color-primary);
+  transition: background-color 0.3s, color 0.3s;
 }
