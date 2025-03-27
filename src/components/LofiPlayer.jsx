@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaCompactDisc } from "react-icons/fa6";
 
 const LofiPlayer = () => {
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const youtubeUrl =
     "https://www.youtube.com/embed/-R0UYHS8A_A?autoplay=1&loop=1&playlist=-R0UYHS8A_A";
 
