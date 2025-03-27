@@ -13,7 +13,37 @@ const Add = () => {
   const [songLink, setSongLink] = useState('');
   const [songSearchQuery, setSongSearchQuery] = useState('');
   const [songResults, setSongResults] = useState([]);
-
+  const badWords = [
+    "asshole", "bitch", "bastard", "fuck", "shit", "damn", "hell", "slut", "whore", "dick", 
+    "pussy", "cock", "cunt", "motherfucker", "faggot", "retard", "bastard", "sonofabitch", 
+    "prick", "twat", "bimbo", "douchebag", "nigger", "chink", "spic", "gook", "kike", "jap", 
+    "wetback", "nigga", "boob", "tits", "sex", "porn", "vagina", "penis", "cum", "bukkake", 
+    "orgasm", "masturbation", "cocktail", "fisting", "banging", "blowjob", "twerking", "ass", 
+    "dildo", "suck", "pussy", "clit", "nut", "ballsy", "bitchslap", "skank", "shag", "broad", 
+    "tramp", "hoe", "stfu", "fml", "lmao", "lmfao", "wtf", "idiot", "retarded", "loser", 
+    "fucking", "shithead", "prick", "jerk", "freak", "dumbass", "shitstain", "cockhead", "asshat", 
+    "cockblock", "dickhead", "ballbag", "shitface", "whorebag", "slutbag", 
+    // Tunisian (Arabic)
+    "زوڤ", "زب", "نيك", "عرس", "حمار", "هبل", "غبي", "مغفل", "كوسة", "شاذ", "قمامة", "خايب", 
+    "كشر", "خنزير", "سمسار", "مبزوط", "منافق", "مغشي", "لعنة", "تافه", "حشيش", "سكل", "قبيح",
+    "زريبة", "حرام", "منبوذ", "بنت الحرام", "عاهرة", "ساقطة", "ديما تحت", "ذليل", "قرد", "طماع", 
+    "قليل الأدب", "فاسق", "فضيحة", "شرموطة", "متخلف", "كذب", "عنيد", "مريض عقلي", "زنا", "تشيش", 
+    "درويش", "شراب", "زهرية", "شريب ماء", "حيوانات", "مخنث", "مقعد", "مقرفة",
+    // Tunisian (Arabizi)
+    "zoof", "zeb","zebi", "nik", "3ars", "hmar", "hbel", "ghabi", "maghfel", "koussa", "shadh", "qimama", "khayeb",
+    "kashar", "khanzir", "samsar", "mabzout", "menafik", "magshi", "la3na", "tafeh", "hchich", "skel", "qbi7",
+    "zreeba", "haram", "menboodh", "bint el haram", "3ahra", "sa9ta", "dima taht", "zleel", "9ard", "tama3",
+    "qaleel el adab", "fassik", "fadhih", "sharmouta", "metkhlef", "khedh", "3aned", "merid aqli", "zina", "tshish", 
+    "drouish", "sherab", "zahria", "chereeb ma2", "7ayawanat", "mekhneth", "me3ad", "mekhra"
+  ];
+  const censorText = (text) => {
+    let censoredText = text;
+    badWords.forEach((word) => {
+      const regex = new RegExp(`\\b${word}\\b`, "gi");
+      censoredText = censoredText.replace(regex, "*".repeat(word.length));
+    });
+    return censoredText;
+  };
   const handleSongSearch = async (e) => {
     e.preventDefault();
     if (songSearchQuery) {
@@ -40,12 +70,15 @@ const Add = () => {
       console.log("No token found, user is not authenticated");
       return;
     }
+    const censoredCaption = censorText(caption);
+
+
 
     try {
       console.log("creating post for user", user.userId);
       const postData = {
         userId: user.userId,
-        caption,
+        caption: censoredCaption, // Use the censored caption
         songUri,
         songLink,
       };
