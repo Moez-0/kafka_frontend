@@ -101,7 +101,7 @@ const Navbar = () => {
       {/* Desktop Authentication links */}
       <div className="hidden md:flex items-center space-x-4">
       
-        <Link to="/explore" className="hover:text-pink-300 transition">Explore</Link>
+        {/* <Link to="/explore" className="hover:text-pink-300 transition">Explore</Link> */}
         {user && (
           <Link to="/myposts" className="hover:text-pink-300 transition">My Posts</Link>
         )}
