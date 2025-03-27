@@ -1,7 +1,7 @@
 import React, { useEffect,useState,useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Import useAuth hook
-import { RiMenu4Fill , RiMenu5Fill } from "react-icons/ri";
+import { RiMenu4Fill , RiMenu5Fill ,RiCloseFill } from "react-icons/ri";
 import { FaCompactDisc } from "react-icons/fa6";
 import LofiPlayer from './LofiPlayer'; // Import LofiPlayer component
 import { MdDarkMode, MdLightMode } from "react-icons/md"; // Import theme icons
@@ -57,10 +57,17 @@ const Navbar = () => {
       <div className="md:hidden md:flex items-center space-x-4 ">
           <LofiPlayer /> {/* 🎶 Lofi Audio Toggle */}
         </div>
-      <RiMenu4Fill
-        onClick={handleMenu}
-        className="h-8 w-8 text-primary  cursor-pointer md:hidden"
-      />
+        {menuOpen ? (
+        <RiCloseFill
+          onClick={handleMenu}
+          className="h-8 w-8 text-primary cursor-pointer md:hidden"
+        />
+      ) : (
+        <RiMenu4Fill
+          onClick={handleMenu}
+          className="h-8 w-8 text-primary cursor-pointer md:hidden"
+        />
+      )}
 
       {/* Mobile menu (visible when menuOpen is true) */}
       {menuOpen && (
@@ -72,6 +79,7 @@ const Navbar = () => {
           <Link to="/post" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Add Post</Link>
           <Link to="/explore" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Explore</Link>
           <Link to="/movies" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Movies</Link>
+          <Link to="/chat" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>Therapist</Link>
         
           {user && (
             <Link to="/myposts" className="hover:text-pink-300 transition" onClick={() => setMenuOpen(false)}>My Posts</Link>
@@ -113,6 +121,9 @@ const Navbar = () => {
         </Link>
         <Link to="/post" className="text-lg">
           <img src={theme === "dark" ? "add.svg" : "add_light.svg"} alt="Add" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
+        </Link>
+        <Link to="/chat" className="text-lg">
+          <img src={theme === "dark" ? "therapist.svg" : "therapist_light.svg"} alt="Therapist" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
         </Link>
       </div>
 

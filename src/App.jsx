@@ -8,6 +8,7 @@ import SignUp from './pages/Signup'
 import Add from './pages/Add'
 import MyPosts from './pages/MyPosts'
 import AdminDashboard from './pages/admin/Admin'
+import KafkaChatbot from './pages/Therapist'
 import { AuthProvider } from './context/AuthContext' // Import AuthProvider
 import ProtectedRoute from './components/ProtectedRoute' // Import ProtectedRoute
 import { ToastContainer } from 'react-toastify';
@@ -29,7 +30,7 @@ function App() {
             <Route path="post" element={<ProtectedRoute><Add /></ProtectedRoute>} />
             <Route path="myposts" element={<ProtectedRoute><MyPosts /></ProtectedRoute>} />
             <Route path="admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
-            
+            <Route path="chat" element={<ProtectedRoute><KafkaChatbot /></ProtectedRoute>} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

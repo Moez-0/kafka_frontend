@@ -5,9 +5,7 @@ const LofiPlayer = () => {
   const [playing, setPlaying] = useState(false);
   const youtubeUrl =
     "https://www.youtube.com/embed/-R0UYHS8A_A?autoplay=1&loop=1&playlist=-R0UYHS8A_A";
-    useEffect(() => {
-      setPlaying(true); // Ensure autoplay on mount
-    }, [])
+
   return (
     <div>
       {/* Button to toggle lofi beats */}
