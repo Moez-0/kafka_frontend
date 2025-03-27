@@ -121,13 +121,11 @@ const Navbar = () => {
           </Link>
         )}
  
-        <button className='cursor-pointer hover:text-pink-300 transition'>
-
-
+      
         <div className="hidden md:flex items-center space-x-4">
           <LofiPlayer /> {/* 🎶 Lofi Audio Toggle */}
         </div>
-        </button>
+        
       </div>
     </nav>
   );
