@@ -22,9 +22,9 @@ const Homepage = () => {
         </p>
 
         <div className="space-x-6">
-          <Link to="/signup" className="bg-primary text-black py-3 px-8 rounded-lg hover:opacity-80 transition">Join Now</Link>
-          <Link to="/explore" className="text-lg text-gray-400 hover:text-white transition">Todays Feelings →</Link>
-        </div>
+  <Link to="/signup" className="bg-primary text-black py-2 px-6 rounded-lg hover:opacity-80 transition sm:py-1 sm:px-4">Join Now</Link>
+  <Link to="/explore" className="text-lg text-gray-400 hover:text-white transition sm:text-sm">Todays Feelings </Link>
+</div>
       </main>
 
     </div>
