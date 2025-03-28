@@ -214,7 +214,7 @@ const Explore = () => {
             <div className="flex flex-wrap items-center justify-center sm:justify-start mt-4 gap-2">
               <button
                 onClick={() => handleLike(post._id)}
-                className="flex items-center space-x-1 sm:space-x-2 bg-primary text-black py-1 px-2 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
+                className="flex items-center space-x-1 sm:space-x-2 bg-primary dark:text-black py-1 px-2 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
               >
                 <FaRegThumbsUp className="text-sm sm:text-xl" />
                 <span>{postReactions[post._id] ? postReactions[post._id].likes : 0} Likes</span>
