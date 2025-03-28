@@ -91,7 +91,7 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <a
             href="https://kafka-backend-idwn.onrender.com/login/spotify"
             className="flex items-center justify-center w-full py-3 bg-green-600 text-white rounded-lg hover:opacity-80 transition"
@@ -99,7 +99,7 @@ const Login = () => {
             <FaSpotify className="mr-2" />
             Login with Spotify
           </a>
-        </div>
+        </div> */}
 
         <div className="mt-6 text-center">
           <p className="text-sm sm:text-base">
