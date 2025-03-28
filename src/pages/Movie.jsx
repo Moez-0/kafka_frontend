@@ -12,7 +12,7 @@ const MovieSuggestion = () => {
   return (
     <div className="flex justify-center items-center min-h-screen  py-6">
       <div className="bg-background p-6 rounded-lg shadow-lg max-w-xs w-full text-center transform transition-transform duration-300 hover:scale-105">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+        <h2 className="text-2xl font-bold text-primary mb-4">
           {movie.title} ({movie.year})
         </h2>
         <img
