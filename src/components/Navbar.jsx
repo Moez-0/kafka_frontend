@@ -107,7 +107,7 @@ const Navbar = () => {
       )}
 
       {/* Desktop Menu (visible on larger screens) */}
-      <div className="hidden md:flex items-center justify-center space-x-6 w-full">
+      <div className="hidden md:flex items-center space-x-4">
         <Link to="/" className="text-lg">
           <img src={theme === "dark" ? "home.svg" : "home_light.svg"} alt="Home" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
         </Link>
