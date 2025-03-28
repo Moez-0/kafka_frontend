@@ -107,7 +107,7 @@ const Navbar = () => {
       )}
 
       {/* Desktop Menu (visible on larger screens) */}
-      <div className="hidden md:ml-[13%] md:flex items-center space-x-4">
+      <div className="hidden md:ml-[10%] md:flex items-center space-x-4">
 
         
         <Link to="/explore" className="text-lg">
