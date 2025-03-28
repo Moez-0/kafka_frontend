@@ -165,162 +165,152 @@ const Explore = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-primary flex flex-col p-4 sm:p-10">
-      <h1 className="text-3xl sm:text-4xl mb-6 sm:mb-8 text-center font-goldman">
+    <div className="min-h-screen bg-background text-primary flex flex-col p-2 sm:p-4 md:p-10">
+      <h1 className="text-xl sm:text-3xl mb-4 sm:mb-6 text-center font-goldman">
         Explore Others' Feelings Today
       </h1>
-      { currentPosts.length === 0 && <p className="text-center text-lg">Be the first to share your feelings!</p> 
-   
-
-      }
-      <div className="space-y-6">
-        {currentPosts.map((post) => (
-          <div key={post._id} className="w-full max-w-xl mx-auto bg-secondary p-4 sm:p-6 rounded-2xl shadow-lg">
-
-        
-            <div>
-              <iframe
-                style={{ borderRadius: "12px" }}
-                src={post.songUri}
-                width="100%"
-                height="352"
-                frameBorder="0"
-                allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-                title={post.caption}
-              ></iframe>
-              <p className="text-sm sm:text-lg text-primary mt-2">{post.caption}</p>
-              <div className="mt-4">
-                <a href={post.songLink} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm sm:text-base">
-                  Listen on Spotify
-                </a>
-              </div>
-
-              <p className="text-sm sm:text-base text-primary mt-2">
-              <span className="font-semibold">
-                Posted By {" "}
-  {post.user.username} at{" "}
   
-  {new Date(post.updatedAt).toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true, // Ensures AM/PM is displayed
-  })}
-</span>
-
-        
-              </p>
-
-              {/* Action Buttons Section */}
-              <div className="flex flex-col sm:flex-row items-center sm:space-x-6 mt-4 space-y-2 sm:space-y-0">
+      {currentPosts.length === 0 && (
+        <p className="text-center text-sm sm:text-lg">Be the first to share your feelings!</p>
+      )}
+  
+      <div className="space-y-4 sm:space-y-6">
+        {currentPosts.map((post) => (
+          <div key={post._id} className="w-full max-w-lg sm:max-w-xl mx-auto bg-secondary p-3 sm:p-4 rounded-xl shadow-lg">
+            
+            <iframe
+              style={{ borderRadius: "12px" }}
+              src={post.songUri}
+              width="100%"
+              height="260" // Adjusted for smaller screens
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title={post.caption}
+            ></iframe>
+  
+            <p className="text-xs sm:text-sm text-primary mt-2">{post.caption}</p>
+  
+            <div className="mt-2">
+              <a href={post.songLink} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-xs sm:text-sm">
+                Listen on Spotify
+              </a>
+            </div>
+  
+            <p className="text-xs sm:text-sm text-primary mt-2">
+              <span className="font-semibold">
+                Posted by {post.user.username} at{" "}
+                {new Date(post.updatedAt).toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: "2-digit",
+                  hour12: true,
+                })}
+              </span>
+            </p>
+  
+            {/* Buttons Section */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start mt-4 gap-2">
+              <button
+                onClick={() => handleLike(post._id)}
+                className="flex items-center space-x-1 sm:space-x-2 bg-primary text-black py-1 px-2 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
+              >
+                <FaRegThumbsUp className="text-sm sm:text-xl" />
+                <span>{postReactions[post._id] ? postReactions[post._id].likes : 0} Likes</span>
+              </button>
+  
+              <button
+                onClick={() => handleComment(post._id)}
+                className="flex items-center space-x-1 sm:space-x-2 bg-primary text-black py-1 px-2 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
+              >
+                <FaRegCommentDots className="text-sm sm:text-xl" />
+                <span>{postComments[post._id] ? postComments[post._id].length : 0} Comments</span>
+              </button>
+  
+              {user && (
                 <button
-                  onClick={() => handleLike(post._id)}
-                  className="flex items-center space-x-2 bg-primary text-black py-1 px-4 rounded-lg hover:opacity-80 transition text-sm sm:text-base w-full sm:w-auto"
+                  onClick={() => handleReport(post._id)}
+                  className="flex items-center space-x-1 sm:space-x-2 bg-red-500 text-white py-1 px-2 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
                 >
-                  <FaRegThumbsUp className="text-xl" />
-                  <span>{postReactions[post._id] ? postReactions[post._id].likes : 0} Likes</span>
+                  <FaExclamationTriangle className="text-sm sm:text-xl" />
+                  <span>Report</span>
                 </button>
-
-                <button
-                  onClick={() => handleComment(post._id)}
-                  className="flex items-center space-x-2 bg-primary text-black py-1 px-4 rounded-lg hover:opacity-80 transition text-sm sm:text-base w-full sm:w-auto"
-                >
-                  <FaRegCommentDots className="text-xl" />
-                  <span>{postComments[post._id] ? postComments[post._id].length : 0} Comments</span>
-                </button>
-                {user && (
-                  <button
-                    onClick={() => handleReport(post._id)}
-                    className="flex items-center space-x-2 bg-red-500 text-white py-1 px-4 rounded-lg hover:opacity-80 transition text-sm sm:text-base w-full sm:w-auto"
-                  >
-                    <FaExclamationTriangle className="text-xl" />
-                    <span>Report</span>
-                  </button>
-                )}
-              </div>
-
-              {/* Display comment input field and current comments */}
-              <div className="mt-4">
-                <div className="mt-4">
-                  <h3 className="text-lg font-semibold">Comments</h3>
-                  <ul className="list-disc pl-5">
-                    {postComments[post._id] &&
-                      postComments[post._id].map((comment, index) => (
-                        <li key={index} className="mb-2">
-                          <span className="font-semibold">{comment.user.username}: </span>
-                          {comment.text}
-                          {comment.user._id === user?.userId && (
-                            <button
-                              onClick={() => handleDeleteComment(post._id, comment._id)}
-                              className="ml-4 text-red-500 hover:text-red-700"
-                            >
-                              Delete
-                            </button>
-                          )}
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-
-                {/* Input for adding a new comment */}
-                <div className="mt-4">
-                  <textarea
-                    value={newComment[post._id] || ""}
-                    onChange={(e) => handleCommentChange(post._id, e.target.value)}
-                    placeholder="Write a comment..."
-                    className="w-full p-1 bg-gray-200 text-background rounded-lg"
-                  ></textarea>
-                  <button
-                    onClick={() => handleComment(post._id)}
-                    className="mt-2 bg-primary text-black py-1 px-4 rounded-lg hover:opacity-80 transition"
-                  >
-                    Post Comment
-                  </button>
-                </div>
-              </div>
+              )}
+            </div>
+  
+            {/* Comments Section */}
+            <div className="mt-3">
+              <h3 className="text-sm sm:text-lg font-semibold">Comments</h3>
+              <ul className="list-disc pl-3 sm:pl-5">
+                {postComments[post._id] &&
+                  postComments[post._id].map((comment, index) => (
+                    <li key={index} className="text-xs sm:text-sm">
+                      <span className="font-semibold">{comment.user.username}: </span>
+                      {comment.text}
+                      {comment.user._id === user?.userId && (
+                        <button
+                          onClick={() => handleDeleteComment(post._id, comment._id)}
+                          className="ml-2 text-red-500 hover:text-red-700 text-xs"
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </li>
+                  ))}
+              </ul>
+            </div>
+  
+            {/* Add Comment */}
+            <div className="mt-3">
+              <textarea
+                value={newComment[post._id] || ""}
+                onChange={(e) => handleCommentChange(post._id, e.target.value)}
+                placeholder="Write a comment..."
+                className="w-full p-1 bg-gray-200 text-background rounded-lg text-xs sm:text-sm"
+              ></textarea>
+              <button
+                onClick={() => handleComment(post._id)}
+                className="mt-2 bg-primary text-black py-1 px-3 sm:px-4 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
+              >
+                Post Comment
+              </button>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Pagination */}
-      <div className="mt-8 text-center">
-        <div className="flex justify-center items-center space-x-4">
+        {/* Pagination Section */}
+      <div className="mt-6 text-center">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
           {currentPage > 1 && (
             <button
               onClick={() => paginate(currentPage - 1)}
-              className="bg-primary text-black py-2 px-6 rounded-lg hover:opacity-80 transition"
+              className="bg-primary text-black py-1 px-3 sm:px-6 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
             >
               Previous
             </button>
           )}
-          {pageNumbers.map((number) => (
-            <button
-              key={number}
-              onClick={() => paginate(number)}
-              className={`${
-                currentPage === number
-                  ? "bg-black text-white"
-                  : "bg-gray-300 text-black"
-              } py-2 px-4 rounded-lg`}
-            >
-              {number}
-            </button>
-          ))}
+
+          {/* Mobile View: Show only current page */}
+          <span className="bg-gray-800 text-white py-1 px-3 sm:px-6 rounded-lg text-xs sm:text-sm">
+            {currentPage}
+          </span>
+
           {currentPage < pageNumbers.length && (
             <button
               onClick={() => paginate(currentPage + 1)}
-              className="bg-primary text-black py-2 px-6 rounded-lg hover:opacity-80 transition"
+              className="bg-primary text-black py-1 px-3 sm:px-6 rounded-lg hover:opacity-80 transition text-xs sm:text-sm"
             >
               Next
             </button>
           )}
         </div>
+
+        
       </div>
     </div>
   );
+  
 };
 
 export default Explore;
