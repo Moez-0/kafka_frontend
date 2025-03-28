@@ -9,6 +9,7 @@ import Add from './pages/Add'
 import MyPosts from './pages/MyPosts'
 import AdminDashboard from './pages/admin/Admin'
 import KafkaChatbot from './pages/Therapist'
+import MovieSuggestion from './pages/Movie'
 import { AuthProvider } from './context/AuthContext' // Import AuthProvider
 import ProtectedRoute from './components/ProtectedRoute' // Import ProtectedRoute
 import { ToastContainer } from 'react-toastify';
@@ -25,7 +26,7 @@ function App() {
             <Route path="explore" element={<Explore />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
-            
+            <Route path="movies" element={<MovieSuggestion />} />
             {/* Protect Add route */}
             <Route path="post" element={<ProtectedRoute><Add /></ProtectedRoute>} />
             <Route path="myposts" element={<ProtectedRoute><MyPosts /></ProtectedRoute>} />
