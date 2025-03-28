@@ -107,18 +107,20 @@ const Navbar = () => {
       )}
 
       {/* Desktop Menu (visible on larger screens) */}
-      <div className="hidden md:flex items-center space-x-4">
-        <Link to="/" className="text-lg">
-          <img src={theme === "dark" ? "home.svg" : "home_light.svg"} alt="Home" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
-        </Link>
+      <div className="hidden md:ml-[13%] md:flex items-center space-x-4">
 
         
         <Link to="/explore" className="text-lg">
           <img src={theme === "dark" ? "explore.svg" : "explore_light.svg"} alt="Explore" className="h-8 w-8 transition-colors duration-200 hover:brightness-60" />
         </Link>
+
         <Link to="/movies" className="text-lg">
           <img src={theme === "dark" ? "movie.svg" : "movie_light.svg"} alt="Explore" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
         </Link>
+        <Link to="/" className="text-lg">
+          <img src={theme === "dark" ? "home.svg" : "home_light.svg"} alt="Home" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
+        </Link>
+
         <Link to="/post" className="text-lg">
           <img src={theme === "dark" ? "add.svg" : "add_light.svg"} alt="Add" className="h-8 w-8 transition-colors duration-200 hover:brightness-60 " />
         </Link>
